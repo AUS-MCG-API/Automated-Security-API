@@ -1,5 +1,5 @@
 #!/bin/bash
-nmap -vvv -oA "$3/IG/NMAP/cve" --script nmap-vulners,vulscan --script-args vulscandb=openvas.csv -sV -p80,443,22,25,110,445 "$2"
+nmap -vvv -oA "$3/IG/NMAP/cve" --script vulners.nse,vulscan.nse --script-args vulscandb=openvas.csv -sV -p80,443,22,25,110,445 "$2"
 nmap -vvv -oA "$3/IG/NMAP/script-syn" -PE -PS80,443,22,25,110,445 -PU -PP -PA80,443,22,25,110,445 -sS -p- -sV --allports -O --fuzzy --script "(default or auth or vuln or exploit) and not http-enum" "$2" | grep 'Hosts that seem down' > /dev/null && { print_failure 'Host down' ; rm -fR "$3"; continue; }
 grep -v '|' "$3/IG/NMAP/script-syn.nmap" > "$3/IG/NMAP/syn.nmap"
 
