@@ -121,13 +121,15 @@
         function startPenTest() {
             var ip = document.getElementById('ip').value;
             var domain = document.getElementById('domain').value;
+            var speed = document.getElementById('speed').value;
             console.log(ip);
             var ips = ip.split(',');
             console.log(ips);
             console.log(ips[0] + ' ' + ips[1]);
             message = new Paho.MQTT.Message(JSON.stringify({
                 ip: ips,
-                domain: domain
+                domain: domain,
+                speed: speed
             }));
             message.destinationName = "pentest/start";
             client.send(message);
@@ -137,6 +139,8 @@
     <input type="text" id="domain">
     <label for="ip">Enter comma separated list of IP address to test (ignore the first 192.168.1.): </label>
     <input type="text" id="ip">
+    <label for="speed">Enter the Speed of Scanning (only enter case sensitive 'fast' or 'normal'):</label>
+    <input type="text" id="speed">
     <br>
     <button type="submit" onclick="startPenTest()">Start Test</button>
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.80 scan initiated Sun Apr  5 20:05:20 2020 as: nmap -vvv -oA 2020-04-05T20:05:20.692Z_Report/192.168.1.1/IG/NMAP/cve -&#45;script nmap-vulners,vulscan -&#45;script-args vulscandb=openvas.csv -sV -p80,443,22,25,110,445 192.168.1.1 -->
+<nmaprun scanner="nmap" args="nmap -vvv -oA 2020-04-05T20:05:20.692Z_Report/192.168.1.1/IG/NMAP/cve -&#45;script nmap-vulners,vulscan -&#45;script-args vulscandb=openvas.csv -sV -p80,443,22,25,110,445 192.168.1.1" start="1586117120" startstr="Sun Apr  5 20:05:20 2020" version="7.80" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="6" services="22,25,80,110,443,445"/>
+<verbose level="3"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1586117120"/>
+<taskend task="NSE" time="1586117120"/>
+<taskbegin task="NSE" time="1586117120"/>
+<taskend task="NSE" time="1586117120"/>
+<taskbegin task="ARP Ping Scan" time="1586117120"/>
+<taskend task="ARP Ping Scan" time="1586117120" extrainfo="1 total hosts"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1586117121"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1586117121"/>
+<taskbegin task="SYN Stealth Scan" time="1586117121"/>
+<taskend task="SYN Stealth Scan" time="1586117121" extrainfo="6 total ports"/>
+<taskbegin task="Service scan" time="1586117121"/>
+<taskend task="Service scan" time="1586117127" extrainfo="3 services on 1 host"/>
+<taskbegin task="NSE" time="1586117127"/>
+<taskend task="NSE" time="1586117128"/>
+<taskbegin task="NSE" time="1586117128"/>
+<taskend task="NSE" time="1586117143"/>
+<host starttime="1586117120" endtime="1586117143"><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.1" addrtype="ipv4"/>
+<address addr="E8:F1:B0:B5:6B:60" addrtype="mac" vendor="Sagemcom Broadband SAS"/>
+<hostnames>
+<hostname name="MyRouter.Home" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="ssh" product="Dropbear sshd" version="0.46" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:matt_johnston:dropbear_ssh_server:0.46</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="vulscan" output="openvas.csv:&#xa;[902803] FreeSSHd Remote Denial of Service Vulnerability&#xa;[902488] OpenSSH &apos;sshd&apos; GSSAPI Credential Disclosure Vulnerability&#xa;[900960] freeSSHd Pre-Authentication Error Remote DoS Vulnerability&#xa;[900959] freeSSHd Version Detection&#xa;[900165] freeSSHd SFTP &apos;rename&apos; and &apos;realpath&apos; Remote DoS Vulnerability&#xa;[864567] Fedora Update for dropbear FEDORA-2012-10934&#xa;[855776] Solaris Update for sshd 141742-04&#xa;[855759] Solaris Update for sshd 140119-11&#xa;[855653] Solaris Update for sshd 141742-02&#xa;[855648] Solaris Update for sshd 140119-09&#xa;[855646] Solaris Update for sshd 140119-07&#xa;[855380] Solaris Update for sshd 140119-06&#xa;[802407] OpenSSH &apos;sshd&apos; Challenge Response Authentication Buffer Overflow Vulnerability&#xa;[200012] FreeSSHD Key Exchange Buffer Overflow&#xa;[100547] freeSSHd SSH2 Connection Data Remote Buffer Overflow Vulnerability&#xa;[71162] FreeBSD Ports: dropbear&#xa;[56070] Gentoo Security Advisory GLSA 200512-13 (dropbear)&#xa;[56051] Debian Security Advisory DSA 923-1 (dropbear)&#xa;&#xa;&#xa;"/></port>
+<port protocol="tcp" portid="25"><state state="closed" reason="reset" reason_ttl="64"/><service name="smtp" method="table" conf="3"/></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" product="micro_httpd" method="probed" conf="10"><cpe>cpe:/a:acme:micro_httpd</cpe><cpe>cpe:/o:acme:micro_httpd</cpe></service><script id="vulscan"/></port>
+<port protocol="tcp" portid="110"><state state="closed" reason="reset" reason_ttl="64"/><service name="pop3" method="table" conf="3"/></port>
+<port protocol="tcp" portid="443"><state state="closed" reason="reset" reason_ttl="64"/><service name="https" method="table" conf="3"/></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service><script id="vulscan" output="openvas.csv:&#xa;[90028] Samba 3.0.0 &gt; 3.0.29 vulnerability&#xa;&#xa;&#xa;"/></port>
+</ports>
+<times srtt="4030" rttvar="966" to="100000"/>
+</host>
+<taskbegin task="NSE" time="1586117143"/>
+<taskend task="NSE" time="1586117143"/>
+<taskbegin task="NSE" time="1586117143"/>
+<taskend task="NSE" time="1586117143"/>
+<runstats><finished time="1586117143" timestr="Sun Apr  5 20:05:43 2020" elapsed="23.14" summary="Nmap done at Sun Apr  5 20:05:43 2020; 1 IP address (1 host up) scanned in 23.14 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

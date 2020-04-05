@@ -1,0 +1,5 @@
+# Nmap 7.80 scan initiated Sun Apr  5 20:05:44 2020 as: nmap -vvv -oA 2020-04-05T20:05:20.692Z_Report/192.168.1.1/IG/NMAP/script-syn -sS -p80,443,22,25,110,445 -sV -O --fuzzy --script "(default or auth or vuln or exploit) and not http-enum" 192.168.1.1
+# Ports scanned: TCP(6;22,25,80,110,443,445) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Host: 192.168.1.1 (MyRouter.Home)	Status: Up
+Host: 192.168.1.1 (MyRouter.Home)	Ports: 22/open/tcp//ssh//Dropbear sshd 0.46 (protocol 2.0)/, 25/closed/tcp//smtp///, 80/open/tcp//http//micro_httpd/, 110/closed/tcp//pop3///, 443/closed/tcp//https///, 445/open/tcp//netbios-ssn//Samba smbd 3.0.37 (workgroup: WORKGROUP)/	OS: Linux 2.6.9 - 2.6.30	Seq Index: 195	IP ID Seq: All zeros
+# Nmap done at Sun Apr  5 20:08:06 2020 -- 1 IP address (1 host up) scanned in 142.38 seconds

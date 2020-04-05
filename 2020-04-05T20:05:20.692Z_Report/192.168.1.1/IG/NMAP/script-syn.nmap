@@ -1,0 +1,731 @@
+# Nmap 7.80 scan initiated Sun Apr  5 20:05:44 2020 as: nmap -vvv -oA 2020-04-05T20:05:20.692Z_Report/192.168.1.1/IG/NMAP/script-syn -sS -p80,443,22,25,110,445 -sV -O --fuzzy --script "(default or auth or vuln or exploit) and not http-enum" 192.168.1.1
+Pre-scan script results:
+| broadcast-avahi-dos: 
+|   Discovered hosts:
+|     224.0.0.251
+|   After NULL UDP avahi packet DoS (CVE-2011-1002).
+|_  Hosts are all up (not vulnerable).
+Nmap scan report for MyRouter.Home (192.168.1.1)
+Host is up, received arp-response (0.0031s latency).
+Scanned at 2020-04-05 20:06:19 UTC for 107s
+
+PORT    STATE  SERVICE     REASON         VERSION
+22/tcp  open   ssh         syn-ack ttl 64 Dropbear sshd 0.46 (protocol 2.0)
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_ssh-auth-methods: ERROR: Script execution failed (use -d to debug)
+| ssh-hostkey: 
+|   1040 c9:03:7a:e5:8d:81:3c:f5:75:f3:78:0f:ac:5f:58:d3 (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgwCAnQcDza1fw/2rHrXlxvU7TPhjBTQ2Dxdy3R9jVPfmAf5l1iGq30oSSUeKj67+gExVY0S/3gvrYmR0luAtGC3VYhA686OH7BijWBFbo7fzXZt2L0pMyVnE17+XQj8uEOvuLhmFunfha8jwTD5ei1UVcVt0cBBMAFqO7VUCk5vuA/Id
+|_ssh-publickey-acceptance: ERROR: Script execution failed (use -d to debug)
+| vulscan: VulDB - https://vuldb.com:
+| [35213] Matt Johnston Dropbear SSH Server up to 0.48 unknown vulnerability
+| [65355] Matt Johnston Dropbear SSH Server up to 0.36 Error Message denial of service
+| [65354] Matt Johnston Dropbear SSH Server up to 0.36 packet.c buf_decompress denial of service
+| [60899] Matt Johnston Dropbear SSH Server up to 0.53 Use-After-Free memory corruption
+| 
+| MITRE CVE - https://cve.mitre.org:
+| [CVE-2007-1099] dbclient in Dropbear SSH client before 0.49 does not sufficiently warn the user when it detects a hostkey mismatch, which might allow remote attackers to conduct man-in-the-middle attacks.
+| [CVE-2006-1206] Matt Johnston Dropbear SSH server 0.47 and earlier, as used in embedded Linux devices and on general-purpose operating systems, allows remote attackers to cause a denial of service (connection slot exhaustion) via a large number of connection attempts that exceeds the MAX_UNAUTH_CLIENTS defined value of 30.
+| [CVE-2005-4178] Buffer overflow in Dropbear server before 0.47 allows authenticated users to execute arbitrary code via unspecified inputs that cause insufficient memory to be allocated due to an incorrect expression that does not enforce the proper order of operations.
+| [CVE-2004-2486] The DSS verification code in Dropbear SSH Server before 0.43 frees uninitialized variables, which might allow remote attackers to gain access.
+| [CVE-2012-0920] Use-after-free vulnerability in Dropbear SSH Server 0.52 through 2012.54, when command restriction and public key authentication are enabled, allows remote authenticated users to execute arbitrary code and bypass command restrictions via multiple crafted command requests, related to "channels concurrency."
+| [CVE-2007-6505] Solaris 9, with Solaris Auditing enabled and certain patches for sshd installed, can generate audit records with an audit-ID of 0 even when the user logging into ssh is not root, which makes it easier for attackers to avoid detection and can make it more difficult to conduct forensics activities.
+| [CVE-2007-4321] fail2ban 0.8 and earlier does not properly parse sshd log files, which allows remote attackers to add arbitrary hosts to the /etc/hosts.deny file and cause a denial of service by adding arbitrary IP addresses to the sshd log file, as demonstrated by logging in via ssh with a client protocol version identification containing an IP address string, a different vector than CVE-2006-6302.
+| [CVE-2006-6302] fail2ban 0.7.4 and earlier does not properly parse sshd log files, which allows remote attackers to add arbitrary hosts to the /etc/hosts.deny file and cause a denial of service by adding arbitrary IP addresses to the sshd log file, as demonstrated by logging in via ssh with a login name containing certain strings with an IP address.
+| [CVE-2004-1357] The Secure Shell (SSH) Daemon (SSHD) in Sun Solaris 9 does not properly log IP addresses when SSHD is configured with the ListenAddress as 0.0.0.0, which makes it easier for remote attackers to hide the source of their activities.
+| 
+| SecurityFocus - https://www.securityfocus.com/bid/:
+| [92974] Dropbear SSH CVE-2016-7406 Format String Vulnerability
+| [92973] Dropbear SSH CVE-2016-7409 Information Disclosure Vulnerability
+| [92972] Dropbear CVE-2016-7407 Local Code Execution Vulnerability
+| [92970] Dropbear SSH CVE-2016-7408 Remote Code Execution Vulnerability
+| [84322] Dropbear SSH CVE-2016-3116 Security Bypass Vulnerability
+| [79327] Freesshd CVE-2009-3340 Denial-Of-Service Vulnerability
+| [72821] Dropbear SSH Multiple Local Security Bypass Vulnerabilities
+| [65562] LXC 'sshd' Template Remote Privilege Escalation Vulnerability
+| [63605] OpenSSH 'sshd' Process Remote Memory Corruption Vulnerability
+| [62993] Dropbear SSH 'svr-auth.c' User Enumeration Weakness
+| [62958] Dropbear SSH 'buf_decompress()' Function Denial of Service Vulnerability
+| [62110] MikroTik RouterOS 'sshd' Component Multiple Heap Memory Corruption Vulnerabilities
+| [61644] PuTTY Private Key 'putty/sshdss.c' Multiple Information Disclosure Vulnerabilities
+| [56785] freeSSHd Authentication Mechanism Authentication Bypass Vulnerability
+| [52159] Dropbear SSH Server Use After Free Remote Code Execution Vulnerability
+| [38887] freeSSHd SSH2 Connection Data Remote Buffer Overflow Vulnerability
+| [38487] ProSSHD 'scp_get()' Buffer Overflow Vulnerability
+| [37116] Sun Solaris 'sshd(1M)' Timeout Mechanism Remote Denial Of Service Vulnerability
+| [36235] freeSSHd Pre Authentication Error Remote Denial of Service Vulnerability
+| [32972] freeSSHd SFTP Commands Multiple Remote Buffer Overflow Vulnerabilities
+| [31872] freeSSHd SFTP 'rename' Remote Buffer Overflow Vulnerability
+| [29453] freeSSHd SFTP 'opendir' Buffer Overflow Vulnerability
+| [27845] freeSSHd 'SSH2_MSG_NEWKEYS' Packet Remote Denial of Service Vulnerability
+| [22761] Dropbear Hostkey Mismatch Warning Weakness
+| [17024] Dropbear Remote Denial Of Service Vulnerability
+| [15923] Dropbear SSH Server Remote Buffer Overflow Vulnerability
+| [10803] Dropbear SSH Server Digital Signature Standard Unspecified Authentication Vulnerability
+| [8439] Dropbear SSH Server Username Format String Vulnerability
+| [4803] OpenBSD sshd BSD Authentication Implementation Error Vulnerability
+| [4300] BitVise WinSSHD Numerous Connections DoS Vulnerability
+| [3494] SSHD CPU utilization bug
+| [797] Sshd RSAREF Buffer Overflow Vulnerability
+| 
+| IBM X-Force - https://exchange.xforce.ibmcloud.com:
+| [86268] PuTTY putty/sshdss.c information disclosure
+| [80476] FreeSSHd security bypass
+| [73444] Dropbear SSH Server code execution
+| [71964] FreeSSHd packet denial of service
+| [61486] Novell Netware SSHD.NLM and SFTP-SVR.NLM buffer overflow
+| [56626] ProSSHD scp_get() buffer overflow
+| [54401] Sun Solaris sshd(1M) denial of service
+| [53611] FreeSSHd string denial of service
+| [52434] freeSSHd open buffer overflow
+| [46046] freeSSHd rename and realpath parameters buffer overflow
+| [44279] OpenSSH sshd weak security
+| [44037] OpenSSH sshd SELinux role unauthorized access
+| [42764] freeSSHd SFTP buffer overflow
+| [41438] OpenSSH sshd session hijacking
+| [40612] FreeSSHd SSH server denial of service
+| [39354] FortressSSH sshd.exe denial of service
+| [37199] DenyHosts sshd log files denial of service
+| [32762] Dropbear SSH client hostkey mismatch weak security
+| [25075] Dropbear SSH Server connection denial of service
+| [23672] Dropbear SSH Server svr-chansession.c buffer overflow
+| [20930] OpenSSH sshd.c LoginGraceTime denial of service
+| [16810] Dropbear DSS verification code execution
+| [12927] Dropbear login using format specifier causes format string
+| [9215] OpenBSD sshd authentication error on systems using YP with netgroups could allow unauthorized access
+| [8470] WinSSHD incomplete connections denial of service
+| [1249] Sshd version 1.2.23 obsolete
+| [316] Sshd advertises information
+| [314] Sshd version 1.2.17 obsolete
+| 
+| Exploit-DB - https://www.exploit-db.com:
+| [387] Dropbear SSH <= 0.34 Remote Root Exploit
+| 
+| OpenVAS (Nessus) - http://www.openvas.org:
+| [902803] FreeSSHd Remote Denial of Service Vulnerability
+| [902488] OpenSSH 'sshd' GSSAPI Credential Disclosure Vulnerability
+| [900960] freeSSHd Pre-Authentication Error Remote DoS Vulnerability
+| [900959] freeSSHd Version Detection
+| [900165] freeSSHd SFTP 'rename' and 'realpath' Remote DoS Vulnerability
+| [864567] Fedora Update for dropbear FEDORA-2012-10934
+| [855776] Solaris Update for sshd 141742-04
+| [855759] Solaris Update for sshd 140119-11
+| [855653] Solaris Update for sshd 141742-02
+| [855648] Solaris Update for sshd 140119-09
+| [855646] Solaris Update for sshd 140119-07
+| [855380] Solaris Update for sshd 140119-06
+| [802407] OpenSSH 'sshd' Challenge Response Authentication Buffer Overflow Vulnerability
+| [200012] FreeSSHD Key Exchange Buffer Overflow
+| [100547] freeSSHd SSH2 Connection Data Remote Buffer Overflow Vulnerability
+| [71162] FreeBSD Ports: dropbear
+| [56070] Gentoo Security Advisory GLSA 200512-13 (dropbear)
+| [56051] Debian Security Advisory DSA 923-1 (dropbear)
+| 
+| SecurityTracker - https://www.securitytracker.com:
+| [1027826] freeSSHd Bug Lets Remote Users Gain Access to the Target System
+| [1026743] Dropbear SSH Server Use-After-Free Lets Remote Authenticated Users Execute Arbitrary Code
+| [1023235] Solaris sshd Timeout Mechanism Lets Remote Users Deny Service
+| [1022811] freeSSHd Unspecified Flaw Lets Remote Users Deny Service
+| [1021096] freeSSHd Buffer Overflow Lets Remote Authenticated Users Execute Arbitrary Code
+| [1020212] freeSSHd Stack Overflow in Processing Directory Name Lets Remote Users Execute Arbitrary Code
+| [1015742] Dropbear SSH Server Authorization-Pending Limit Lets Remote Users Deny Service
+| [1010785] Dropbear SSH Server DSS Verification Memory Error May Let Remote Users Execute Arbitrary Code
+| [1009708] Sun Solaris sshd May Fail to Log SSH Client IP Addresses
+| [1007523] Dropbear SSH Server Format String Flaw Lets Remote Users Execute Arbitrary Code
+| [1003840] Bitvise WinSSHD Protocol State Error Allows Remote Users to Cause the Secure Shell Server to Stop Accepting Incoming Connections
+| [1002748] OpenSSH 3.0 Denial of Service Condition May Allow Remote Users to Crash the sshd Daemon and KerberosV Configuration Error May Allow Remote Users to Partially Authenticate When Authentication Should Not Be Permitted
+| 
+| OSVDB - http://www.osvdb.org:
+| [95970] PuTTY sshrsa.c / sshdss.c getstring() Function SSH Handshake Message Length Handling Multiple Remote Integer Overflows
+| [88006] freeSSHd Login Failure Remote Authentication Bypass
+| [82595] freeSSHd Malformed Packet Handling Remote DoS
+| [79590] Dropbear SSH Server Channel Concurrency Use-after-free Remote Code Execution
+| [78706] OpenSSH auth-options.c sshd auth_parse_options Function authorized_keys Command Option Debug Message Information Disclosure
+| [78425] Oracle Solaris sshd Component Unspecified Remote DoS
+| [67743] Novell NetWare OpenSSH SSHD.NLM Absolute Path Handling Remote Overflow
+| [67623] freeSSHd SSH Key Exchange NULL Dereference Remote DoS
+| [61907] Cisco IOS XR SSH Server sshd_child_handler Process Crafted Packet Remote DoS
+| [60498] Solaris sshd(1M) Timeout Mechanism Unspecified Remote DoS
+| [59353] OpenSSH sshd Local TCP Redirection Connection Masking Weakness
+| [59352] SSH sshd Local TCP Redirection Connection Masking Weakness
+| [58495] OpenSSH sshd ChrootDirectory Feature SetUID Hard Link Local Privilege Escalation
+| [57927] freeSSHd Unspecified Pre-authentication Remote DoS
+| [54362] freeSSHd SFTP Command Handling Multiple Remote Overflows
+| [50057] freeSSHd Multiple Parameters Remote Overflow
+| [49386] OpenSSH sshd TCP Connection State Remote Account Enumeration
+| [48791] OpenSSH on Debian sshd Crafted Username Arbitrary Remote SELinux Role Access
+| [45867] freeSSHd SFTP Command Name Handling Overflow
+| [43278] FortressSSH sshd.exe Data Object Handling Remote DoS
+| [42766] Georgia SoftWorks SSH2 Server (GSW_SSHD) username Field Remote Format String
+| [42765] Georgia SoftWorks SSH2 Server (GSW_SSHD) Multiple Authentication Fields Remote Overflow
+| [42484] Fail2ban Crafted Client Version sshd Log File Parsing Arbitrary Host Addition DoS
+| [42482] DenyHosts Crafted Client Version sshd Log File Parsing Arbitrary Host Addition DoS
+| [41849] freeSSHd SSH Server Crafted Packet NULL Pointer Dereference Remote DoS
+| [36758] InterWorx-CP NodeWorx sshd.php PATH_INFO Parameter XSS
+| [36515] BlockHosts sshd/vsftpd hosts.allow Arbitrary Deny Entry Manipulation
+| [33814] Dropbear dbclient hostkey Mismatch Warning Weakness
+| [32088] Dropbear SSH dbclient Hostkey Mismatch Weakness
+| [31795] Fail2ban sshd Log File Parsing Arbitrary Host Denial DoS
+| [28159] SSH Tectia Management Agent sshd Restart Local Privilege Escalation
+| [25463] freeSSHd Key Exchange Algorithm String Remote Overflow
+| [23960] Dropbear SSH Authorization-pending Connection Saturation DoS
+| [21847] Dropbear SSH Server svr_ses.childpidsize Remote Overflow
+| [8138] Dropbear SSH Server buffer.c Overflow Issue
+| [8137] Dropbear SSH Server DSS Verification Failure Remote Privilege Escalation
+| [8040] sshd Authentication Agent Mechanism Arbitrary User Credential Disclosure
+| [8039] Bitvise WinSSHD Incomplete Connection Saturation DoS
+| [8037] Rapidstream VPN sshd Default Hardcoded Admin Account
+| [8035] SSH Server sshd2 Failed Login Attempt Logging Failure
+| [5010] Solaris SSHD Client IP Logging Failure
+| [2429] Dropbear SSH Server Username Remote Format String
+| [2109] OpenSSH sshd Root Login Timing Side-Channel Weakness
+| [1773] SSH sshd Connection Saturation DoS
+| [1586] sshd scp Traversal Arbitrary File Overwrite
+|_
+25/tcp  closed smtp        reset ttl 64
+80/tcp  open   http        syn-ack ttl 64 micro_httpd
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+|_http-aspnet-debug: ERROR: Script execution failed (use -d to debug)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-jsonp-detection: Couldn't find any JSONP endpoints.
+| http-method-tamper: 
+|   VULNERABLE:
+|   Authentication bypass by HTTP verb tampering
+|     State: VULNERABLE (Exploitable)
+|       This web server contains password protected resources vulnerable to authentication bypass
+|       vulnerabilities via HTTP verb tampering. This is often found in web servers that only limit access to the
+|        common HTTP methods and in misconfigured .htaccess files.
+|              
+|     Extra information:
+|       
+|   URIs suspected to be vulnerable to HTTP verb tampering:
+|     / [HEAD]
+|   
+|     References:
+|       https://www.owasp.org/index.php/Testing_for_HTTP_Methods_and_XST_%28OWASP-CM-008%29
+|       http://www.mkit.com.ar/labs/htexploit/
+|       http://capec.mitre.org/data/definitions/274.html
+|_      http://www.imperva.com/resources/glossary/http_verb_tampering.html
+| http-methods: 
+|_  Supported Methods: POST
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-title: 400 Bad Request
+|_http-vuln-cve2014-3704: ERROR: Script execution failed (use -d to debug)
+|_http-wordpress-users: [Error] Wordpress installation was not found. We couldn't find wp-login.php
+| vulscan: VulDB - https://vuldb.com:
+| No findings
+| 
+| MITRE CVE - https://cve.mitre.org:
+| [CVE-2010-1544] micro_httpd on the RCA DCM425 cable modem allows remote attackers to cause a denial of service (device reboot) via a long string to TCP port 80.
+| 
+| SecurityFocus - https://www.securityfocus.com/bid/:
+| [68746] Acme micro_httpd CVE-2014-4927 Buffer Overflow Denial of Service Vulnerability
+| [38488] RCA Digital Cable Modem DCM425 'micro_httpd' Remote Denial Of Service Vulnerability
+| 
+| IBM X-Force - https://exchange.xforce.ibmcloud.com:
+| No findings
+| 
+| Exploit-DB - https://www.exploit-db.com:
+| [11597] RCA DCM425 Cable Modem micro_httpd DoS/PoC
+| 
+| OpenVAS (Nessus) - http://www.openvas.org:
+| No findings
+| 
+| SecurityTracker - https://www.securitytracker.com:
+| No findings
+| 
+| OSVDB - http://www.osvdb.org:
+| [62713] RCA DCM425 Cable Modem micro_httpd Crafted TCP Packet Device Reboot DoS
+|_
+110/tcp closed pop3        reset ttl 64
+443/tcp closed https       reset ttl 64
+445/tcp open   netbios-ssn syn-ack ttl 64 Samba smbd 3.0.37 (workgroup: WORKGROUP)
+|_clamav-exec: ERROR: Script execution failed (use -d to debug)
+| vulscan: VulDB - https://vuldb.com:
+| [3460] GNU Samba up to 3.x GETDC Stack-based memory corruption
+| [3459] GNU Samba up to 3.x reply_netbios_packet memory corruption
+| 
+| MITRE CVE - https://cve.mitre.org:
+| [CVE-2013-4124] Integer overflow in the read_nttrans_ea_list function in nttrans.c in smbd in Samba 3.x before 3.5.22, 3.6.x before 3.6.17, and 4.x before 4.0.8 allows remote attackers to cause a denial of service (memory consumption) via a malformed packet.
+| [CVE-2011-0719] Samba 3.x before 3.3.15, 3.4.x before 3.4.12, and 3.5.x before 3.5.7 does not perform range checks for file descriptors before use of the FD_SET macro, which allows remote attackers to cause a denial of service (stack memory corruption, and infinite loop or daemon crash) by opening a large number of files, related to (1) Winbind or (2) smbd.
+| [CVE-2013-0214] Cross-site request forgery (CSRF) vulnerability in the Samba Web Administration Tool (SWAT) in Samba 3.x before 3.5.21, 3.6.x before 3.6.12, and 4.x before 4.0.2 allows remote attackers to hijack the authentication of arbitrary users by leveraging knowledge of a password and composing requests that perform SWAT actions.
+| [CVE-2013-0213] The Samba Web Administration Tool (SWAT) in Samba 3.x before 3.5.21, 3.6.x before 3.6.12, and 4.x before 4.0.2 allows remote attackers to conduct clickjacking attacks via a (1) FRAME or (2) IFRAME element.
+| [CVE-2012-1182] The RPC code generator in Samba 3.x before 3.4.16, 3.5.x before 3.5.14, and 3.6.x before 3.6.4 does not implement validation of an array length in a manner consistent with validation of array memory allocation, which allows remote attackers to execute arbitrary code via a crafted RPC call.
+| [CVE-2011-2694] Cross-site scripting (XSS) vulnerability in the chg_passwd function in web/swat.c in the Samba Web Administration Tool (SWAT) in Samba 3.x before 3.5.10 allows remote authenticated administrators to inject arbitrary web script or HTML via the username parameter to the passwd program (aka the user field to the Change Password page).
+| [CVE-2011-2522] Multiple cross-site request forgery (CSRF) vulnerabilities in the Samba Web Administration Tool (SWAT) in Samba 3.x before 3.5.10 allow remote attackers to hijack the authentication of administrators for requests that (1) shut down daemons, (2) start daemons, (3) add shares, (4) remove shares, (5) add printers, (6) remove printers, (7) add user accounts, or (8) remove user accounts, as demonstrated by certain start, stop, and restart parameters to the status program.
+| [CVE-2004-0186] smbmnt in Samba 2.x and 3.x on Linux 2.6, when installed setuid, allows local users to gain root privileges by mounting a Samba share that contains a setuid root program, whose setuid attributes are not cleared when the share is mounted.
+| 
+| SecurityFocus - https://www.securityfocus.com/bid/:
+| [36250] Samba 3.x Multiple Unspecified Remote Vulnerabilities
+| 
+| IBM X-Force - https://exchange.xforce.ibmcloud.com:
+| [46975] Samba smbd information disclosure
+| [37092] RHSA update for Samba smbd share connection request denial of service not installed
+| [32301] Samba smbd file rename denial of service
+| [27648] Samba smbd share connection request denial of service
+| [17325] Samba ASN.1 smbd denial of service
+| [86185] Samba read_nttrans_ea_list denial of service
+| [82955] Samba Active Directory Domain Controller unauthorized access
+| [81694] Samba SWAT clickjacking
+| [81693] Samba Samba Web Administration Tool cross-site request forgery
+| [81326] Samba objectClass based LDAP security bypass
+| [78811] Samba unspecified code execution
+| [75277] Samba LSA security bypass
+| [74721] Samba RPC code execution
+| [74438] Samba mount.cifs information disclosure
+| [73361] BlackBerry PlayBook Samba code execution
+| [72775] Samba connection request denial of service
+| [70317] Samba mtab denial of service
+| [69662] Samba check_mtab denial of service
+| [68844] Samba user cross-site scripting
+| [68843] Samba SWAT cross-site request forgery
+| [66702] Samba smbfs security bypass
+| [65724] Samba FD_SET denial of service
+| [61773] Samba sid_parse() buffer overflow
+| [59481] Samba SMB1 packet code execution
+| [58565] Samba Negotiate Protocol Request denial of service
+| [58564] Samba Session Setup AndX denial of service
+| [58393] Samba mount.cifs symlink
+| [56758] Samba CAP_DAC_OVERRIDE flag security bypass
+| [56123] Samba mount.cifs.c denial of service
+| [56111] Samba symlink directory traversal
+| [55944] samba-client mount.cifs utility symlink
+| [53575] Samba SMB denial of service
+| [53574] Samba mount.cifs information disclosure
+| [51328] Samba smbclient format string
+| [51327] Samba ACL security bypass
+| [50439] Samba winbind daemon denial of service
+| [47733] Samba file system security bypass
+| [45251] Xerox ESS/Network Controller Samba code execution
+| [44678] Samba group_mapping.tdb security bypass
+| [42664] Samba receive_smb_raw() buffer overflow
+| [38965] Samba send_mailslot function buffer overflow
+| [38502] Samba reply_netbios_packet() buffer overflow
+| [38501] Samba nmbd buffer overflow
+| [38123] GoSamba include_path file include
+| [36893] SmbFTPD SMBDirList format string
+| [36560] Samba smb.conf privilege escalation
+| [35738] Apple Mac OS X Samba file system security bypass
+| [35401] GSAMBAD populate_conns function symlink
+| [34506] Samba version detected
+| [34316] Samba lsa_io_trans_names buffer overflow
+| [34315] Samba SID name translation privilege escalation
+| [34314] Samba sec_io_acl buffer overflow
+| [34312] Samba smb_io_notify_option_type_data buffer overflow
+| [34311] Samba netdfs_io_dfs_EnumInfo_d buffer overflow
+| [34309] Samba lsa_io_privilege_set buffer overflow
+| [34307] Samba smb.conf shell command execution
+| [32979] Apple Mac OS X Samba module (SMB File Server) buffer overflow
+| [32304] Samba afsacl.so VFS plugin format string
+| [32231] Samba nss_winbind.so.1 library gethostbyname and getipnodebyname buffer overflow
+| [32151] Samba multiple unspecified buffer overflows
+| [30920] Sambar FTP Server SIZE denial of service
+| [29169] HP-UX CIFS Samba privilege escalation
+| [25575] Samba clear text machine trust account credentials
+| [22943] Sambar Server proxy.asp allows cross-site scripting
+| [20710] Sambar Server search/results.stm and session/logout scripts cross-site scripting
+| [18519] Samba MS-RPC request heap corruption
+| [18070] Samba QFILEPATHINFO buffer overflow
+| [17987] Samba ms_fnmatch denial of service
+| [17556] Samba allows file access outside of the share`s defined path
+| [17454] Samba samba-vscan denial of service
+| [17326] Samba nmbd mailslot denial of service
+| [17139] Samba memory leak information disclosure
+| [17138] Samba FindNextPrintChangeNotify request denial of service
+| [16786] Samba mangling method buffer overflow
+| [16785] Samba SWAT invalid base64 character causes buffer overflow
+| [16287] Sambar showlog.asp and showini.asp scripts directory traversal
+| [16286] Sambar show.asp and showperf.asp scripts cross-site scripting
+| [16059] Sambar Server HTTP POST code execution
+| [16056] Sambar Server multiple script cross-site scripting
+| [16054] Sambar Server HTTP keep-alive allows unauthorized access
+| [15545] Samba smbprint.log symlink attack
+| [15132] Samba mksmbpasswd.sh could allow an attacker to gain access to user`s account
+| [15131] Samba smbmnt allows elevated privileges
+| [15071] Sambar Server HTTP POST request buffer overflow
+| [13305] Sambar Server multiple vulnerabilities
+| [12749] Samba reply_nttrans function buffer overflow
+| [12402] Sambar Server search.pl denial of service
+| [11845] Sambar Server Pro Server WebMail interface transmits password and username in plain text
+| [11726] Samba and Samba-TNG call_trans2open() function buffer overflow
+| [11634] Sambar Server remote file cross-site scripting
+| [11633] Sambar Server dot dot directory traversal
+| [11631] Sambar Server multiple scripts cross-site scripting
+| [11630] Sambar Server textcgi.exe and environ.pl path disclosure
+| [11616] Samba-TNG security context management code could allow root access
+| [11551] Samba .reg file code race condition
+| [11550] Samba SMB/CIFS packet fragment re-assembly code buffer overflow
+| [11128] Sambar Server search request cross-site scripting
+| [10683] Samba encrypted password change request buffer overflow
+| [10010] Samba enum_csc_policy memory structure buffer overflow
+| [8876] Sambar Server Perl script source disclosure
+| [8710] Sambar Server Pbcgi.exe denial of service
+| [8709] Sambar Server testcgi.exe denial of service
+| [8707] Sambar Server long HTTP header field denial of service
+| [8705] Sambar Server MSVCRT.dll long username and password buffer overflow
+| [7894] Sambar Server cgitest.exe example script denial of service
+| [6973] Sambar Server Telnet proxy long password buffer overflow
+| [6972] Sambar Server Telnet proxy continuous connections denial of service
+| [6916] Sambar Server &quot
+| [6909] Sambar Server insecure password protection
+| [6731] samba NetBIOS name allows remote attackers to create symlink to SMB log file
+| [6396] Samba tmpfile symlink attack could allow elevated privileges
+| [5445] Samba swat logfile information retrieval
+| [5444] Samba swat URL filename denial of service
+| [5443] Samba swat logging symbolic link
+| [5442] Samba swat brute force attack
+| [5247] Sambar search.dll allows attacker to view folders on the system
+| [4592] Sambar Server 4.3 buffer overflow
+| [3999] Sambar Server hello.bat and echo.bat CGI scripts
+| [3227] Samba smbmnt utility could allow mounting to arbitrary mount points
+| [3225] Samba message service potential buffer overflow
+| [3224] Samba nmbd daemon can be remotely crashed or caused to enter an infinite loop
+| [3223] Sambar server allows remote viewing of environment information
+| [1672] Sambar Server logging code buffer overflow
+| [1671] Sambar mailit client allows script execution
+| [1669] Sambar Server ships with default accounts
+| [1406] Samba wsmbconf binary allows users access to the group root
+| [1311] Samba open share
+| [1237] Samba .. Bug
+| [337] Samba SMB password buffer overflow
+| [9] Samba .. bug
+| 
+| Exploit-DB - https://www.exploit-db.com:
+| [20223] Sambar Server 4.3/4.4 beta 3 Search CGI Vulnerability
+| [10095] Samba 3.0.10 - 3.3.5 Format String And Security Bypass Vulnerabilities
+| [9950] Samba 3.0.21-3.0.24 LSA trans names Heap Overflow
+| [7701] Samba < 3.0.20 - Remote Heap Overflow Exploit
+| [4732] Samba 3.0.27a send_mailslot() Remote Buffer Overflow PoC
+| [364] Samba <= 3.0.4 SWAT Authorization Buffer Overflow Exploit
+| 
+| OpenVAS (Nessus) - http://www.openvas.org:
+| [90028] Samba 3.0.0 > 3.0.29 vulnerability
+| 
+| SecurityTracker - https://www.securitytracker.com:
+| [1028882] Samba smbd CPU Processing Loop Lets Remote Users Deny Service
+| [1026595] Samba smbd Memory Leak Lets Remote Users Deny Service
+| [1022976] Samba smbd Processing Flaw Lets Remote Authenticated Users Deny Service
+| [1022442] Samba smbd Access Control Bug Lets Remote Authenticated Users Bypass Certain Access Controls
+| [1017587] Samba smbd Deferred File Open Processing Bug Lets Remote Users Deny Service
+| [1016459] Samba smbd Memory Limit Error in make_connection() Lets Remote Users Deny Service
+| [1012587] Samba smbd Integer Overflow in Allocating Security Descriptors May Let Remote Users Execute Arbitrary Code
+| [1011223] Samba smbd Infinite Loop Lets Remote Users Consume All Available Memory
+| [1011097] Samba FindNextPrintChangeNotify() Error Lets Remote Authenticated Users Crash smbd
+| [1006290] Samba 'smbd' Buffer Overflow May Let Remote Users Gain Root Access
+| [1028389] Samba Bug Lets Remote Authenticated Users Modify Files
+| [1028365] IBM Storwize V7000 Unified Samba Bug Lets Remote Authenticated Users Modify Files
+| [1028312] Samba Active Directory Domain Controller File Permission Flaw Lets Remote Authenticated Users Access Files
+| [1028006] Samba Active Directory Domain Controller Access Control Flaw Lets Remote Authenticated Gain Write Access to Certain Objects
+| [1026988] Samba Local Security Authority Bug Lets Remote Authenticated Users Gain Elevated Privileges
+| [1026913] Samba Buffer Overflow in NDR Marshalling Code Lets Remote Users Execute Arbitrary Code
+| [1026739] Samba Bug in chain_reply()/construct_reply() Lets Remote Users Execute Arbitrary Code
+| [1026727] Blackberry PlayBook Samba File Sharing Lets Remote Users Execute Arbitrary Code
+| [1025984] Samba 'mount.cifs' check_newline() Error Lets Local Users Deny Service
+| [1025852] Samba Web Administration Tool (SWAT) Input Validation Flaws Permit Cross-Site Request Forgery and Cross-Site Scripting Attacks
+| [1025132] Samba FD_SET Stack Corruption Flaw Lets Remote and Local Users Deny Service
+| [1024434] Samba Buffer Overflow in sid_parse() Lets Remote Users Execute Arbitrary Code
+| [1024107] Samba SMB1 Packet Chaining Memory Corruption Error Lets Remote Users Execute Arbitrary Code
+| [1023700] Samba Access Control Flaw Lets Remote Authenticated Users Gain Elevated Privileges
+| [1023547] Samba 'mount.cifs' Race Condition Lets Local Users Gain Elevated Privileges
+| [1023546] Samba Symlink Configuration Error Lets Remote Users Access Arbitrary Files
+| [1022975] Samba 'mount.cifs' Lets Local Users View Portions of Files on the Target System
+| [1022441] Samba smbclient Format String Bug May Let Users Execute Arbitrary Code
+| [1021513] Samba Grants Remote Authenticated Users Access to the Root Filesystem in Certain Cases
+| [1021287] Samba 'trans', 'trans2', and 'nttrans' Requests Let Remote Users Obtain Memory Contents
+| [1020770] Samba 'group_mapping.ldb' Has Unsafe Permissions That Let Local Users Gain Elevated Privileges
+| [1020123] Samba Buffer Overflow in receive_smb_raw() Lets Remote Users Execute Arbitrary Code
+| [1019065] Samba Buffer Overflow in nmbd send_mailslot() Lets Remote Users Execute Arbitrary Code
+| [1018954] Samba nmbd Buffer Overflow in Processing GETDC mailslot Requests Lets Remote Users Execute Arbitrary Code
+| [1018953] Samba nmbd Buffer Overflow in reply_netbios_packet() Lets Remote Users Execute Arbitrary Code
+| [1018681] Samba Winbind SFU/RFC2307 GID Error Lets Local Users Gain Elevated Privileges
+| [1018051] Samba 'smb.conf' Scripts Input Validation Flaw Lets Remote Users Inject Arbitrary Commands
+| [1018050] Samba Heap Overflows in Parsing NDR Data Let Remote Users Execute Arbitrary Code
+| [1018049] Samba SID/Name Translation Bug Lets Local Users Gain Root Privileges
+| [1017589] Samba Solaris winbindd Daemon Name Resolution Query Buffer Overflows May Let Remtoe Users Execute Arbitrary Code
+| [1017588] Samba Format String Bug in 'afsacl.so' VFS Plugin May Let Remote Users Execute Arbitrary Code
+| [1017393] Sambar Server FTP SIZE Command Lets Remote Authenticated Users Deny Service
+| [1015850] Samba winbindd Daemon Discloses Server Password to Local Users
+| [1012235] Samba QFILEPATHINFO Buffer Overflow Lets Remote Authenticated Users Execute Arbitrary Code
+| [1012133] Samba Input Validation Error in ms_fnmatch() Lets Remote Authenticated Users Deny Service
+| [1011949] Samba pppd Callback Control Protocol Pointer Dereference May Let Remote Users Deny Service
+| [1011469] Samba DOS Path Conversion Flaw Discloses Files to Remote Users
+| [1011222] Samba Input Validation Error in nmbd process_logon_packet() Lets Remote Users Crash the nmbd Service
+| [1010753] Samba Buffer Overflows in Web Administration Tool and in 'hash' Mangling Method May Let Remote Users Execute Arbitrary Code
+| [1010353] Sambar Server 'showini.asp' and 'showlog.asp' Disclose Files to Remote Authenticated Administrators
+| [1009503] Samba 'smbprint' Unsafe Temporary File May Let Local Users Gain Elevated Privileges
+| [1009000] Samba 'smbmnt' Permissions May Let Local Users Gain Root Privileges
+| [1008990] Samba May Let Remote Users Access SMB Accounts That Have Invalid Passwords
+| [1008979] Sambar Server 'results.stm' POST Request Buffer Overflow  May Permit Remote Code Execution
+| [1007819] Sambar Server Contains Multiple Unspecified Vulnerabilities
+| [1007016] Sambar Server Buffer Overflow in 'search.pl' Lets Remote Users Crash the Service
+| [1006934] Sambar Server Discloses Files on the System to Remote Users
+| [1006637] Sambar Server WebMail Discloses User Passwords Transmitted Via the Network
+| [1006498] Samba-TNG Buffer Overflow in call_trans2open() Function Lets Remote Users Execute Arbitrary Code With Root Privileges
+| [1006497] Samba Buffer Overflow in call_trans2open() Function Lets Remote Users Execute Arbitrary Code With Root Privileges
+| [1006390] Sambar Server Input Validation Flaws Disclose Files on the System to Remote Users and Permit Cross-Site Scripting Attacks
+| [1005946] Sambar Server Input Validation Hole in Query Feature Lets Remote Users Conduct Cross-Site Scripting Attacks
+| [1005677] Samba Buffer Overflow in User Input Routine May Let Remote Users Execute Arbitrary Code with Root Privileges
+| [1004624] HP-UX Samba Common Internet File System (CIFS) Client Buffer Overflow May Let Local Users Obtain Elevated Privileges on the System
+| [1004084] Sambar Server Discloses Script Source Code to Remote Users and Can Be Crashed By Remote Users via Malformed URLs
+| [1003941] Sambar Server Buffer Overflow Holes Let Remote Users Crash the Service or Execute Arbitrary Code on the System
+| [1003246] Sambar Web Server Sample CGI Allows Remote Users to Crash the Web Server
+| [1002302] HP CIFS/9000 (Samba) Server Lets Authenticated Remote Users Change Another User's Password
+| [1002187] Sambar Telnet Proxy/Server Password Buffer Overflow May Allow Remote Users to Execute Arbitrary Code on the Server
+| [1002082] Sambar Web Server Lets Remote Users Modify Files on the Server
+| [1002079] Sambar Server Password File Can Be Decrypted By Local Users
+| [1002038] Sambar Server's Web Server Lets Local Users Disclose Files Outside of the Documents Directory
+| [1002037] Sambar Server's SMTP Mail Server May Allow Remote Users to Relay Mail Through the Server
+| [1001826] Samba Common Internet File System (CIFS) Lets Remote Users Obtain Root Level Access
+| [1001339] Samba SMB Networking Software Allows Local Users to Destroy Data on Local Devices
+| 
+| OSVDB - http://www.osvdb.org:
+| [95969] Samba smbd nttrans.c read_nttrans_ea_list Function Malformed Packet Handling Remote DoS
+| [78651] Samba smbd Connection Request Parsing Remote DoS
+| [65518] Samba smbd process.c chain_reply Function SMB1 Packet Chaining Memory Corruption
+| [65436] Samba smbd sesssetup.c Session Setup AndX Security Blob Length Value Uninitialized Variable Out-of-bounds DoS
+| [65435] Samba smbd process.c chain_reply Function Session Setup AndX Request NULL Dereference Remote DoS
+| [58519] Samba smbd Crafted SMB Request Remote CPU Consumption DoS
+| [57651] Samba smbd Unspecified Heap Overflow
+| [55411] Samba smbd/posix_acls.c acl_group_override Function Remote Access Control List Modification
+| [50230] Samba smbd *trans* Request Arbitrary Remote Memory Disclosure
+| [33100] Samba smbd Deferred Open Code Infinite Loop DoS
+| [12422] Samba smbd Security Descriptor Parsing Remote Overflow
+| [9362] Samba smbd FindNextPrintChangeNotify() Request Remote DoS
+| [6323] Samba smbd SMB/CIFS Packet Fragment Reassembly Remote Overflow
+| [93189] HP MPE/iX with Samba/iX Unspecified Remote Issue
+| [92247] Red Hat Storage Management Console GlusterFS extras/hook-scripts/S30samba-stop.sh Symlink Arbitrary File Overwrite
+| [91889] Samba SMB2 Implementation CIFS Share Attribute Enforcement Weakness
+| [91503] Samba Active Directory Domain Controller CIFS Shares World-writeable Files Creation Weakness
+| [91255] ASUS RT-N66U Router root$ Samba Share Export Remote Information Disclosure
+| [89627] Samba Web Administration Tool (SWAT) Manipulation CSRF
+| [89626] Samba Web Administration Tool (SWAT) Clickjacking Weakness
+| [89180] Samba AD DC LDAP Directory Objects Erroneous Write Access Permissions
+| [83446] Samba smbmount Multiple Variable Username Handling Local Overflow
+| [81648] Samba Multiple Remote Procedural Calls (RPC) Local Security Authority (LSA) Arbitrary File Manipulation
+| [81490] Samba mount.cifs chdir() Call File Enumeration
+| [81303] Samba RPC Code Generator Network Data Representation (NDR) Multiple Request Parsing Remote Overflow
+| [79443] Samba process.c Any Batched (AndX) Request Packet Parsing Remote Overflow
+| [79041] Webmin Samba Windows File Sharing Module /tmp/.webmin Local Password Disclosure
+| [76058] Samba mtab Lock File Handling Local DoS
+| [74872] Samba smbfs mount.cifs / umount.cifs RLIMIT_FSIZE Value Handling mtab Local Corruption DoS
+| [74871] Samba mount.cifs Tool Share / Directory Name Newline Injection mtab Corruption Local DoS
+| [74072] Samba Web Administration Tool (SWAT) Change Password Page user Field XSS
+| [74071] Samba Web Administration Tool (SWAT) Multiple Function CSRF
+| [71268] Samba FD_SET Macro Memory Corruption
+| [69288] VLC Media Player Samba Network Share Module Incorrect Calling Convention Stack Corruption
+| [67994] Samba sid_parse() Function SID Parsing Remote Overflow
+| [62803] Samba CAP_DAC_OVERRIDE Capability Flag File Permission Restriction Bypass
+| [62187] Samba sid_parse Stack Overflow
+| [62186] Samba mount.cifs Symlink Arbitrary File Access
+| [62155] Samba smbfs mount.cifs client/mount.cifs.c Crafted String mtab Corruption Local DoS
+| [62145] Samba Guest Account Symlink Traversal Arbitrary File Access
+| [60587] Windows File Sharing Samba Client Resource Exhaustion DoS
+| [59810] Samba reply_nttrans Function Remote Overflow
+| [59511] HP-UX CIFS/9000 Server (SAMBA) Unspecified Resource Modification Arbitrary File Overwrite
+| [59350] Samba Web Administration Tool (SWAT) Malformed HTTP Request Saturation Remote DoS
+| [58520] Samba SUID mount.cifs --verbose Argument Arbitrary File Portion Disclosure
+| [57955] Samba Unconfigured Home Directory Windows File Share Directory Access Restriction Bypass
+| [57653] Samba Unspecified Heap Overflow
+| [57652] Samba --enable-developer Functionality Unspecified Heap Overflow
+| [57172] Samba-TNG Unspecified Remote Privilege Escalation
+| [55412] Samba smbclient client/client.c Filename Specifiers Multiple Format Strings
+| [55370] Sambar Server Pbcgi.exe Remote Overflow
+| [55369] Sambar Server testcgi.exe Remote Overflow
+| [54378] Samba winbind Daemon Unresponsive Child Process Race Condition DoS
+| [53074] Sambar Server /session/sendmail Arbitrary Mail Relay
+| [51152] Samba Crafted Connection Request Remote Root File System Access
+| [48699] CUPS cupsaddsmb Temporary File Cleartext Samba Credential Disclosure
+| [47786] Samba group_mapping.tdb Permission Weakness Privilege Escalation
+| [45657] Samba lib/util_sock.c receive_smb_raw() Function Crafted Packet Handling Overflow
+| [42884] Sambar Server with IndigoPerl /cgi-bin/com1.pl Arbitrary Command Execution
+| [42305] Samba Unspecified Remote Issue
+| [42251] Sambar Server Unspecified Remote Command Execution
+| [41385] SmbFTPD SMBDirList() Function Directory Name Remote Format String
+| [40714] GoSamba main.php include_path Parameter Remote File Inclusion
+| [40713] GoSamba inc_user.php include_path Parameter Remote File Inclusion
+| [40712] GoSamba inc_smb_conf.php include_path Parameter Remote File Inclusion
+| [40711] GoSamba inc_newgroup.php include_path Parameter Remote File Inclusion
+| [40710] GoSamba inc_manager.php include_path Parameter Remote File Inclusion
+| [40709] GoSamba inc_group.php include_path Parameter Remote File Inclusion
+| [40708] GoSamba inc_freigabe3.php include_path Parameter Remote File Inclusion
+| [40707] GoSamba inc_freigabe1.php include_path Parameter Remote File Inclusion
+| [40706] GoSamba inc_freigabe.php include_path Parameter Remote File Inclusion
+| [40705] GoSamba HTML_oben.php include_path Parameter Remote File Inclusion
+| [39191] Samba nmdb send_mailslot() Function GETDC mailslot Request Remote Overflow
+| [39180] Samba nmbd Crafted GETDC mailslot Request Remote Overflow
+| [39179] Samba nmbd nmbd/nmbd_packets.c reply_netbios_packet Function Remote Overflow
+| [39178] Samba idmap_ad.so Winbind nss_info Extension (nsswitch/idmap_ad.c) Local Privilege Escalation
+| [37795] GSAMBAD /tmp/gsambadtmp Symlink Arbitrary File Overwrite
+| [36971] Apple Mac OS X Samba Server Disk Quota Bypass
+| [34852] Apple Mac OS X Apple-specific Samba Module (SMB File Server) ACL Handling Overflow
+| [34733] Samba DFS RPC Interface DFSEnum Request Remote Overflow
+| [34732] Samba SPOOLSS RPC Interface RFNPCNEX Request Remote Overflow
+| [34731] Samba SRVSVC RPC Interface NetSetFileSecurity Request Remote Overflow
+| [34700] Samba Unfiltered MS-RPC Calls Arbitrary Remote Command Execution
+| [34699] Samba LSA RPC Interface Multiple Function Remote Overflow
+| [34698] Samba SID/Name Translation Privileged SMB/CIFS Protocol Operation Execution
+| [33101] Samba VFS Plugin afsacl.so Format String
+| [33098] Samba nss_winbind.so.1 Multiple Function Overflow
+| [32336] Sambar FTP Server Malformed SIZE Command DoS
+| [27130] Samba smdb Share Connection Saturation DoS
+| [24263] Samba winbindd Debug Log Server Credentials Local Disclosure
+| [23282] Samba Unspecified Remote Memory Leak Information Disclosure
+| [20434] Sambar Server proxy.asp Multiple Field XSS
+| [16751] Sambar Server Referer XSS
+| [16750] Sambar Server logout RCredirect XSS
+| [16749] Sambar Server results.stm indexname XSS
+| [14525] Samba Encrypted Password String Conversion Decryption Overflow DoS
+| [14233] Sambar Telnet Proxy/Server Long Password Overflow
+| [13872] Samba smbclient mput Symlink Arbitrary File Overwrite
+| [13871] Samba smbclient more Symlink Arbitrary File Overwrite
+| [13870] Samba Printer Queue Query Symlink Arbitrary File Overwrite
+| [13397] Samba Multiple Unspecified Overflows
+| [12642] Samba .reg File Race Condition Arbitrary File Overwrite
+| [11794] Sambar Server whois Script Hostname Remote Overflow
+| [11793] Sambar Server finger Script Hostname Remote Overflow
+| [11782] Samba QFILEPATHINFO Unicode Filename Request Handler Overflow
+| [11555] Samba ms_fnmatch() Function Wildcard Matching Remote DoS
+| [11521] Samba Password Field Handling Remote Overflow
+| [11479] Microsoft Windows NT Double Dot Samba Client DoS
+| [10886] Sambar Web Server Long HTTP GET Request Overflow
+| [10464] Samba MS-DOS Path Request Arbitrary File Retrieval
+| [9917] Samba nmbd process_logon_packet Function Remote DoS
+| [9916] Samba ASN.1 Parsing Function Malformed Request DoS
+| [8860] Samba NETBIOS Name Service Daemon DoS
+| [8859] Samba smbmnt Race Condition Arbitrary Mount Point
+| [8191] Samba Mangling Method Hash Overflow
+| [8190] Samba Web Administration Tool (SWAT) HTTP Basic Auth base64 Decoding Remote Overflow
+| [7529] Samba wsmbconf Command Execution and Privilege Escalation
+| [6585] Sambar Server showini.asp Arbitrary File Access
+| [6584] Sambar Server showperf.asp title Parameter XSS
+| [6583] Sambar Server show.asp show Parameter XSS
+| [5820] Sambar Server vchist.stm Multiple Parameter XSS
+| [5819] Sambar Server vccreate.stm Multiple Parameter XSS
+| [5818] Sambar Server vccheckin.stm Multiple Parameter XSS
+| [5817] Sambar Server update.stm Multiple Parameter XSS
+| [5816] Sambar Server template.stm path Parameter XSS
+| [5815] Sambar Server sendmail.stm Multiple Parameter XSS
+| [5814] Sambar Server rename.stm Multiple Parameter XSS
+| [5813] Sambar Server mkdir.stm path Parameter XSS
+| [5812] Sambar Server htaccess.stm path Parameter XSS
+| [5811] Sambar Server ftp.stm path Parameter XSS
+| [5810] Sambar Server info.stm Multiple Parameter XSS
+| [5809] Sambar Server create.stm path Parameter XSS
+| [5808] Sambar Server iecreate.stm path Parameter XSS
+| [5807] Sambar Server edit.stm Multiple Parameter XSS
+| [5806] Sambar Server ieedit.stm Multiple Parameter XSS
+| [5805] Sambar Server search.dll query Parameter XSS
+| [5804] Sambar Server environ.pl param1 Parameter XSS
+| [5803] Sambar Server testisa.dll check1 Parameter XSS
+| [5802] Sambar Server echo.bat Code Execution
+| [5786] Sambar Server results.stm Overflow
+| [5785] Sambar Server book.pl E-mail Field XSS
+| [5784] Sambar Server dumpenv.pl XSS
+| [5783] Sambar Server ssienv.shtml XSS
+| [5782] Sambar Server mortgage.pl price Parameter XSS
+| [5781] Sambar Server DOS Device Name Code Execution
+| [5780] Sambar Server Proxy IP Filter Bypass
+| [5468] Sambar Server Password Encryption Scheme Weakness
+| [5123] Sambar DOS Device Name DoS
+| [5122] Sambar Server Null Terminated URL Arbitrary File Source Disclosure
+| [5108] Sambar Server search.stm Multiple Parameter XSS
+| [5107] Sambar Server findata.stm Multiple Parameter XSS
+| [5106] Sambar Server whodata.stm sitename Parameter XSS
+| [5105] Sambar Server showfnc.stm pkg Parameter XSS
+| [5104] Sambar Server showfncs.stm pkg Parameter XSS
+| [5103] Sambar Server showfunc.stm func Parameter XSS
+| [5102] Sambar Server stmex.stm XSS
+| [5101] Sambar Server ipdata.stm ipaddr Parameter XSS
+| [5100] Sambar Server testcgi.exe XSS
+| [5097] Sambar Server index.stm wwwsite Parameter XSS
+| [5096] Sambar Server iecreate.stm Directory Listing
+| [5095] Sambar Server ieedit.stm Directory Listing
+| [5094] Sambar Server testcgi.exe Environment Variable Disclosure
+| [5093] Sambar Server environ.pl Environment Variable Disclosure
+| [4469] Samba trans2.c call_trans2open() Function Overflow
+| [3919] Samba mksmbpasswd.sh Uninitialized Passwords
+| [3916] Samba smbmnt Local Privilege Escalation
+| [2204] Sambar Server search.pl results.stm Overflow DoS
+| [1626] Samba Web Administration Tool (SWAT) cgi.log Permission Weakness Information Disclosure
+| [1625] Samba Web Administration Tool (SWAT) Failed Login Logging Failure Weakness
+| [1025] Samba smdb Malformed Message Handling Remote Overflow
+| [861] Samba enum_csc_policy Data Structure Termination Remote Overflow
+| [656] Samba NETBIOS Name Traversal Arbitrary Remote File Creation
+| [589] Sambar Web Server pagecount CGI Traversal Arbitrary File Overwrite
+| [487] Samba Web Administration Tool (SWAT) Error Message Username Enumeration
+| [413] Sambar Server ISAPI Search Utility search.dll Query Parameter Parsing Folder Name Disclosure
+| [319] Sambar Server mailit.pl Arbitrary Mail Relay
+| [318] Sambar Server Sysadmin Web Interface Default Account
+| [317] Sambar sendmail CGI Arbitrary Mail Relay
+| [215] Samba Web Administration Tool (SWAT) cgi.log Symlink Arbitrary File Modification
+| [194] Sambar Server hello.bat Code Execution
+| [52] Sambar Server dumpenv.pl Information Disclosure
+| [34] Sambar Server cgitest.exe Crafted GET Request Parsing Remote Overflow
+|_
+MAC Address: E8:F1:B0:B5:6B:60 (Sagemcom Broadband SAS)
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6
+OS details: Linux 2.6.9 - 2.6.30
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=4/5%OT=22%CT=25%CU=39364%PV=Y%DS=1%DC=D%G=Y%M=E8F1B0%T
+OS:M=5E8A3AA6%P=x86_64-pc-linux-gnu)SEQ(SP=C3%GCD=1%ISR=CD%TI=Z%CI=Z%II=I%T
+OS:S=A)OPS(O1=M5B4ST11NW1%O2=M5B4ST11NW1%O3=M5B4NNT11NW1%O4=M5B4ST11NW1%O5=
+OS:M5B4ST11NW1%O6=M5B4ST11)WIN(W1=16A0%W2=16A0%W3=16A0%W4=16A0%W5=16A0%W6=1
+OS:6A0)ECN(R=Y%DF=Y%T=40%W=16D0%O=M5B4NNSNW1%CC=N%Q=)T1(R=Y%DF=Y%T=40%S=O%A
+OS:=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=Y%T=40%W=16A0%S=O%A=S+%F=AS%O=M5B4ST11
+OS:NW1%RD=0%Q=)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40
+OS:%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q
+OS:=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164
+OS:%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Uptime guess: 2.731 days (since Fri Apr  3 02:35:04 2020)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=195 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel, cpe:/o:acme:micro_httpd
+
+Host script results:
+|_clock-skew: mean: -18355d02h30m00s, deviation: 5s, median: -18355d02h30m04s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 34008/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 22053/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 34383/udp): CLEAN (Failed to receive data)
+|   Check 4 (port 30159/udp): CLEAN (Timeout)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+|_smb-enum-users: ERROR: Script execution failed (use -d to debug)
+| smb-os-discovery: 
+|   OS: Unix (Samba 3.0.37)
+|   NetBIOS computer name: 
+|   Workgroup: WORKGROUP\x00
+|_  System time: 1970-01-03T17:36:32+00:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: share (dangerous)
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: false
+|_smb-vuln-regsvc-dos: ERROR: Script execution failed (use -d to debug)
+|_smb2-security-mode: Couldn't establish a SMBv2 connection.
+|_smb2-time: Protocol negotiation failed (SMB2)
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Apr  5 20:08:06 2020 -- 1 IP address (1 host up) scanned in 142.38 seconds
