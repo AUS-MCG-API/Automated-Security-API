@@ -1,4 +1,8 @@
-<h1>Installing the API to a Local Machine</h1>
+<h4 style="text-align:center">Grant Number: 13/2018</h4>
+<h1 style="text-align:center">Grant Title: Improved Blockchain Infrastructure with IoT for Critical/Smart Government Applications</h1>
+<img src="https://upload.wikimedia.org/wikipedia/en/c/c8/American_University_of_Sharjah_%28emblem%29.png" style="margin-left:auto;margin-right: auto;display: block" >
+<hr> 
+<h2>Installing the API to a Local Machine</h2>
 <ol>
     <li>
         <h3>Initial Installation</h3>
@@ -118,7 +122,7 @@
         </ul>
     </li>
 </ol>
-<h1>Report Generation</h1>
+<h2>Report Generation</h2>
 <ol>
     <li>
         <h3>Structure of the report generated</h3>
